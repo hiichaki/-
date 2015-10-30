@@ -10,6 +10,7 @@ f.close();
 cin>>n;
 for(int i=0;i<s.length();++i)
 	s[i]+=n;
+	
 ofstream ff("1.txt");
 	 ff<<s;	
 }

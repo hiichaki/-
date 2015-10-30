@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <string>
 #include <map>
+#include <windows.h>
 using namespace std;
-
 
 void show(map<char,int> m){
 	double sum=0;
@@ -74,5 +74,3 @@ int main (){
 	
  	system("pause");
 }
-
-

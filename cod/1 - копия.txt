@@ -1,5 +1,0 @@
-The history of computing is longer than the history of computing hardware and modern computing technology and includes the history of methods intended for pen and paper or for chalk and slate, with or without the aid of tables.
-
-Computing is intimately tied to the representation of numbers. But long before abstractions like the number arose, there were mathematical concepts to serve the purposes of civilization. These concepts include one-to-one correspondence (the basis of counting), comparison to a standard (used for measurement), and the 3-4-5 right triangle (a device for assuring a right angle).
-
-The earliest known tool for use in computation was the abacus, and it was thought to have been invented in Babylon circa 2400 BC. Its original style of usage was by lines drawn in sand with pebbles. Abaci, of a more modern design, are still used as calculation tools today. This was the first known computer and most advanced system of calculation known to date - preceding Greek methods by 2,000 years.
