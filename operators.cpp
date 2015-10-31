@@ -75,6 +75,9 @@ class Qwe{
 	void operator/=(Qwe b){
 		this->a/=b.a;
 	}
+	void operator=(Qwe b){
+		this->a=b.a;
+	}
 	int& operator[] (int i){
 		return arr[i];
 	} 
