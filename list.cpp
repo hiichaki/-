@@ -1,11 +1,14 @@
 #include <iostream>
 #include <stdlib.h>
-using std::cout;
-using std::cin;
-
+using namespace std;
 struct Listt {
     int Data;
     Listt *next; 
+	
+	friend ostream& operator<<(ostream& os, const Listt& a){
+		os<<a.Data;
+    	return os;
+	}
 };
 
 void delListt(Listt* front){
@@ -75,7 +78,6 @@ Listt* insertt(Listt* front, int n, int in){
   return front; 
 }
 
-
 void create(int n,Listt** front){
   if (n>0){
     (*front) = new Listt();
@@ -95,18 +97,24 @@ void show(Listt* front) {
   cout<<"\n";
 }
 
+int sum(Listt *front,int n){
+	int sum=0;
+	for(int i=0;i<n;++i){
+		sum+=front->Data;
+		cout<<*front<<" ";	
+		front=front->next;	
+	}
+	return sum;
+		
+}
 int main(){
 	Listt *front; 
 	Listt *cur; 
-	create(10,&front);
+	create(3,&front);
 	show(front);
-	insertt(front,4,25);
-	cout<<search(front,25)<<"\n";
-	show(front);
-	del(front,4);
-	cout<<search(front,25)<<"\n";
-	show(front);
-	delListt(front);
+	cout<<r(front,3);
+	
+
 	
 }
 
