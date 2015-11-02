@@ -2,29 +2,27 @@
 using namespace std;
 
 class Qwe{
-	
 	public:
 		int a,b,*arr;
 		Qwe(){
 			a=1;
 		}
-		
+	friend istream& operator>>(istream& is, Qwe& a){
+	    is>>a.a>>a.b;
+	    return is;
+	}	
 	friend ostream& operator<<(ostream& os, const Qwe& a){
 		os<<a.a<<" "<<a.b;
     	return os;
 	}
-	friend istream& operator>>(istream& is, Qwe& a){
-	    is>>a.a>>a.b;
-	    return is;
-	}
 	friend bool operator==(Qwe a,Qwe b){
 		return a.a==b.a;
 	}
-	friend bool operator>(Qwe a,Qwe b){
-		return a.a>b.a;
-	}
 	friend bool operator<(Qwe a,Qwe b){
 		return a.a<b.a;
+	}
+	friend bool operator>(Qwe a,Qwe b){
+		return a.a>b.a;
 	}
 	friend bool operator!=(Qwe a,Qwe b){
 		return a.a!=b.a;
@@ -85,12 +83,5 @@ class Qwe{
 		return arr[i]*i;
 	}
 };
-
-
 int main(){
-	Qwe q,b;
-
-	
-	cout<<q+b;
 }
-	
