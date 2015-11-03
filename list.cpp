@@ -113,9 +113,7 @@ int main(){
 	create(3,&front);
 	show(front);
 	cout<<r(front,3);
-	
 
-	
 }
 
 

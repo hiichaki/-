@@ -1,16 +1,27 @@
 #include<iostream>
 #include <fstream>
 using namespace std;
+
+string cryptCaesar(string s){
+	int n;
+	cin>>n;
+	for(int i=0;i<s.length();++i)
+		s[i]+=n;
+	return s;	
+}
+
+void save(string s,string u){
+	ofstream ff(u);
+	ff<<s;	
+	ff.close();	
+}
+
 int main(){
 ifstream f("1.txt");
-int n;
 string s;
 getline (f,s,'\0');
 f.close();
-cin>>n;
-for(int i=0;i<s.length();++i)
-	s[i]+=n;
-	
-ofstream ff("1.txt");
-	 ff<<s;	
+	s=cryptCaesar(s);
+	save(s,"1.txt");
+
 }

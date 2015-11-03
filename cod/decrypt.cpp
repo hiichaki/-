@@ -34,22 +34,22 @@ char maxx(string s,bool q){
 	return max;	
 }
 
-void decrypt(char a,string l,int max,string s){
-	    int key=a-max;
-	 	cout<<"\n"<<key<<"\n";
-	 	for(int i=0;i<s.length();++i)
-	 		s[i]+=key;
-	 	ofstream ff(l);
-		ff<<s;	
-		ff.close();	
+string decrypt(char a,string l,int max,string s){
+	int key=a-max;
+	cout<<"\n"<<key<<"\n";
+	for(int i=0;i<s.length();++i)
+		s[i]+=key;
+	return s; 	
 }
 
-int main (){    
+void save(string s,string u){
+	ofstream ff(u);
+	ff<<s;	
+	ff.close();	
+}
 
-	string s,ss,sss;
-	ifstream f("1.txt");
-	getline (f,s,'\0');
-	f.close();
+string decryptCaesar(string s){
+	string ss,sss;
 	ss=s;
 	sss=s;
 	char max;
@@ -63,14 +63,25 @@ int main (){
 	max=maxx(s,q);
 	
 	if(q){
-		decrypt(' ',"space.txt",max,s);
+		return decrypt(' ',"space.txt",max,s);
 	}
 	else{
 		sss.erase(std::remove(sss.begin(),sss.end(),max),sss.end()); 
 		q=true;
 		max=maxx(sss,q);
-		decrypt('e',"e.txt",max,s);
+		return decrypt('e',"e.txt",max,s);
 	}
+}
+
+int main (){    
+
+	string s,ss;
+	ifstream f("1.txt");
+	getline (f,s,'\0');
+	f.close();
+	
+	s=decryptCaesar(s);
+	save(s,"2.txt");
 	
  	system("pause");
 }
