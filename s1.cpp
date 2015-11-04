@@ -12,10 +12,10 @@ class Cell{
 			for(int i=0;i<9;++i)
 				possible[i]=i+1;
 			a=0;	
-		
 		}
-		void removePossible(int j){
-			possible[j-1]=0;
+		
+		void removePossible(int i){
+			possible[i-1]=0;
 		}
 		
 		void operator=(int _a){
@@ -44,7 +44,7 @@ class Cell{
 	}
 	
 	bool operator==(Cell a,int b){
-		return a.geta()==b?1:0;
+		return a.geta()==b;
 	}
 
 class sudoku {
@@ -71,22 +71,16 @@ class sudoku {
 		
 		bool search_(int i, int z){
 			for(int j=0;j<9;++j)
-				return a[i][j]==z?1:0;
+				return a[i][j]==z;	
 		}
 		
 		void ch(){
-//			for(int i=0;i<9;++i)
-//				for(int j=1;j<10;++j)
-					if(search_(0,4)) 
-						for(int z=0;z<9;++z)
-							a[0][z].removePossible(4);				
+			for(int i=0;i<9;++i)
+				for(int j=0;j<9;++j){
+					
+				}
 		}
 
-		
-		void checkSquare(){
-			
-		}	
-			
 		void show(){
 			for(int i=0;i<9;++i){
 				for(int j=0;j<9;++j)	

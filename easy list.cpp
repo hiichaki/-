@@ -15,4 +15,5 @@ int main(void)
    for (i = listOne.end(); i != listOne.begin(); --i)
      cout << *i << " ";
    cout << endl;
+   listOne.clear();
  }
