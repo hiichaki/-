@@ -34,7 +34,7 @@ char maxx(string s,bool q){
 	return max;	
 }
 
-string decrypt(char a,string l,int max,string s){
+string decryptC(char a,int max,string s){
 	int key=a-max;
 	cout<<"\n"<<key<<"\n";
 	for(int i=0;i<s.length();++i)
@@ -63,13 +63,13 @@ string decryptCaesar(string s){
 	max=maxx(s,q);
 	
 	if(q){
-		return decrypt(' ',"space.txt",max,s);
+		return decryptC(' ',max,s);
 	}
 	else{
 		sss.erase(std::remove(sss.begin(),sss.end(),max),sss.end()); 
 		q=true;
 		max=maxx(sss,q);
-		return decrypt('e',"e.txt",max,s);
+		return decryptC('e',max,s);
 	}
 }
 
@@ -81,6 +81,7 @@ int main (){
 	f.close();
 	
 	s=decryptCaesar(s);
+	
 	save(s,"2.txt");
 	
  	system("pause");

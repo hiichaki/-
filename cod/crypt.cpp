@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include <fstream>
 using namespace std;
 
@@ -17,11 +17,13 @@ void save(string s,string u){
 }
 
 int main(){
-ifstream f("1.txt");
-string s;
-getline (f,s,'\0');
-f.close();
+	ifstream f("1.txt");
+	string s;
+	getline (f,s,'\0');
+	f.close();
+
 	s=cryptCaesar(s);
+	
 	save(s,"1.txt");
 
 }
