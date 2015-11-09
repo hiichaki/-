@@ -315,7 +315,6 @@ void lk(){
     Beep(329, 500);    
 }
 
-
 class Qwe{
 	
 	public:

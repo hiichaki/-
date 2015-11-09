@@ -98,7 +98,6 @@ Listt* del_back(Listt* front){
         iter=iter->next; 
       iter->next=cur->next;
       delete(cur);
-      cur=iter;
       return front;
 }
 
