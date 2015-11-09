@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -44,6 +45,7 @@ class list1{
 			p=this;
 			for(int i=0;i<n;++i)
 				p=p->next;
+				
 			while(p->next!=NULL){
 				tmp1=p->val;
 				p->val=tmp2;
@@ -66,6 +68,7 @@ class list1{
 		    cout<<p->val<<" ";
 		    p=p->next;
 		  }
+		  cout<<"\n";
 		}
 	
 		void remove(qwe a){
@@ -85,7 +88,9 @@ class list1{
 				}	
 				else	
 					p=p->next;
-			}			
+			}		
+			if(p->val==a)	
+				pop_back();
 		}
 		
 		void pop_front(){
@@ -117,7 +122,37 @@ class list1{
 			next=NULL;
 		}
 		
+		void insert_after(qwe a,qwe b){
+			list1 *p=this;
+			int i=0;
+			while(p->next!=NULL){
+				i++;
+				if(p->val==a){
+					insert(i,b);
+				}
+				p=p->next;
+			}
+			if(a==p->val)
+				push_back(b);
+		}
 		
+		void insert_before(qwe a,qwe b){
+			list1 *p=this;
+			int i=0,q;
+			if(a==p->val)
+				push_front(b);
+			else{
+				while(p!=NULL){
+					i++;
+					if(p->val==a)
+						q=i-1;
+					p=p->next;
+				}		
+				insert(q,b);
+			}
+		}
+	
+	
 	
 		qwe max(){
 		  bool f=0;
@@ -164,8 +199,51 @@ class list1{
 			}
 			return sum;	
 		}	
+		
+		qwe count(){
+			list1 *p=this;
+			int i=0;
+			while(p->next!=NULL){
+				i++;
+				p=p->next;
+			}
+			return i;
+		}
+
+		qwe avg(){
+			return sum()/(count()+1);	
+		}	
+		
+		qwe get_val(){
+			return val;
+		}
+		
+		list1* get_next(){
+			return next;
+		}
+		
+		template <typename azaza> void remove_if(azaza pred){
+			list1 *p=this;
+			while(p->next!=NULL){
+				if(pred(p->val))
+					remove(p->val);
+				p=p->next;
+			}
+			cout<<p->val<<"\n";
+			if(pred(p->val))
+				pop_back();
+		}
+
+	
 };
 
+
 int main(){
-	list1<int> li;
+list1<int>a;
+for(int i=0;i<a.count();++i)
+ 	a.push_front(i+1);
+ 	
+ list1<int>*p=a.get_next();
+ a.show();	
+		
 }
