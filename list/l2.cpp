@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
 
-template<class qwe>class list2{
+template<class qwe>
+class list2{
     
     struct node{
         qwe val;
@@ -10,26 +11,26 @@ template<class qwe>class list2{
 
     };
     
-    node* head;
+    node* front;
     public:
         
         list2(){
-            head = new (node); 
-            head->next = NULL;
+            front = new node; 
+            front->next = NULL;
         }
         
         ~list2(){
             destroy(); 
-            delete head;
+            delete front;
         }
         
         void push_back(qwe a){
             node* p,*p1;
-            p = head;  
+            p = front;  
             while(p->next != NULL)  
                 p = p->next;
          
-            p1 = new (node); 
+            p1 = new node; 
             p1->val = a;  
             p1->next = NULL; 
          
@@ -39,38 +40,39 @@ template<class qwe>class list2{
          
         void show(){
             node* p;
-            p = head->next;
+            p = front->next;
             while(p != NULL){
-                cout<<(p->val)<<" ";
+                cout<<p->val<<" ";
                 p = p->next;
             }
+            cout<<"\n";
         }
          
-        void push_front(qwe el){
+        void push_front(qwe a){
             node* p;
-            p = new (node);
-            p->val = el;
-            if(head->next == NULL){
-                p->next = head->next;
-                head->next = p;
-                p->prev = head;
+            p = new node;
+            p->val = a;
+            if(front->next == NULL){
+                p->next = front->next;
+                front->next = p;
+                p->prev = front;
             }
             else{
-                p->next = head->next;
-                head->next->prev = p;
-                head->next = p;
-                p->prev = head;
+                p->next = front->next;
+                front->next->prev = p;
+                front->next = p;
+                p->prev = front;
             }
         }
          
         void show_reverse(){
             node* p;
-            p = head;
+            p = front;
             
             while(p->next != NULL)
                 p = p->next;
          
-            while(p != head){
+            while(p != front){
                 cout<<(p->val)<<" ";
                 p = p->prev;
             }
@@ -78,7 +80,7 @@ template<class qwe>class list2{
          
         void destroy(){
             node* p,* p1;
-            p = head;
+            p = front;
             p1 = p->next;
             while(p1 != NULL){
                 p = p1;
@@ -89,7 +91,7 @@ template<class qwe>class list2{
          
         void pop_back(){
             node* p,* p1;
-            p = head;
+            p = front;
             p1 = p->next;
             while(p1->next != NULL){
                 p = p1;
@@ -101,14 +103,32 @@ template<class qwe>class list2{
          
         void pop_front(){       
             node* p;
-            p = head->next;
-            head->next = p->next;
-            p->next->prev = head;
+            p = front->next;
+            front->next = p->next;
+            p->next->prev = front;
             delete p;
         }
         
-        
-                
+        void insert(int n,qwe a){
+            node *p,*p1;
+            p = front;
+            for(int i=0;i<n;++i)
+                p=p->next;
+            p1=new node;
+            p1->val=a;       	
+            p1->next=p->next;
+			(p1->next)->prev=p1;
+			p->next=p1;
+			p1->prev=p;  
+
+        }
+          
+		void remove(qwe a){
+			node *p;
+			p=front;
+			while(p!=NULL)
+			
+		}        
 };
 
 int main(){
@@ -116,8 +136,11 @@ int main(){
     
     for(int i=0;i<10;++i)
         li.push_back(i+1);
-   
+        
+    li.insert(3,111);
+    li.show();
 }
+
 
 
 
