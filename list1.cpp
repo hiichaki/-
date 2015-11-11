@@ -234,16 +234,24 @@ class list1{
 				pop_back();
 		}
 
-	
+		qwe operator[](int n){
+			list1 *p=this;
+			for(int i=0;i<n;++i)
+				p=p->next;
+			return p->val;	
+		}
+		
 };
 
 
 int main(){
 list1<int>a;
-for(int i=0;i<a.count();++i)
+for(int i=0;i<10;++i)
  	a.push_front(i+1);
- 	
- list1<int>*p=a.get_next();
- a.show();	
+ 	a.pop_back();
+	a.show();
+	
+	for(int i=0;i<10;++i)
+		cout<<a[i]<<" ";
 		
 }
