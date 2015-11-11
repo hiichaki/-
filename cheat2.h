@@ -636,6 +636,12 @@ class list1{
 				pop_back();
 		}
 	
+		qwe operator[](int n){
+			list1 *p=this;
+			for(int i=0;i<n;++i)
+				p=p->next;
+			return p->val;	
+		}
 };
 
 
@@ -872,7 +878,15 @@ class stack1{
 			if(pred(p->val))
 				pop_back();
 		}
-	
+
+		qwe operator[](int n){
+			stack1 *p=this;
+			for(int i=0;i<n;++i)
+				p=p->next;
+			return p->val;	
+		}
+		
+			
 };
 
 
@@ -1109,6 +1123,15 @@ class queue1{
 			if(pred(p->val))
 				pop_back();
 		}
+		
+		qwe operator[](int n){
+			queue1 *p=this;
+			for(int i=0;i<n;++i)
+				p=p->next;
+			return p->val;	
+		}
+		
+		
 	
 };
 
