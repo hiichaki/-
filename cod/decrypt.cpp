@@ -114,7 +114,7 @@ int main (){
 	f.close();
 	
 	s=decryptChange(s);
-	
+	cout<<"\n";
 	s=decryptCaesar(s);
 	
 	save(s,"2.txt");
