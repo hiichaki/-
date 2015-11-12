@@ -126,8 +126,16 @@ class list2{
 		void remove(qwe a){
 			node *p;
 			p=front;
-			while(p!=NULL)
-			
+			while(p!=NULL){
+				if(p->val==a){
+					(p->prev)->next=p->next;
+					(p->next)->prev=p->prev;
+					delete p;						
+				}
+				
+				p=p->next;
+			}
+				
 		}        
 };
 
@@ -136,8 +144,8 @@ int main(){
     
     for(int i=0;i<10;++i)
         li.push_back(i+1);
-        
-    li.insert(3,111);
+    li.show();    
+    li.remove(2);
     li.show();
 }
 

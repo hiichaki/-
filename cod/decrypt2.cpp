@@ -13,14 +13,9 @@ void save(string s,string u){
 	ff.close();	
 }
 
-int main(){
+string decryptChange(string s){
 	map<int,int> m;
-	string s;
-	ifstream f("1.txt");
-	getline (f,s,'\0');
-	f.close();
-
-    list<int> words;
+	list<int> words;
     istringstream ist(s);
     int tmp;
     while(ist>>tmp)
@@ -44,7 +39,17 @@ int main(){
 	string ss;
 	for(auto it=words.begin();it!=words.end();++it)
 		ss+=char(*it/2);
+}
+
+int main(){
+	string s;
+	ifstream f("1.txt");
+	getline (f,s,'\0');
+	f.close();
 	
-	save(ss,"2.txt");
+	
+    s=decryptChange(s);
+	
+	save(s,"2.txt");
 	
 }

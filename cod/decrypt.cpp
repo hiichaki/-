@@ -4,7 +4,10 @@
 #include <string>
 #include <map>
 #include <windows.h>
+#include <list>
+#include <sstream>
 using namespace std;
+
 
 void show(map<char,int> m){
 	double sum=0;
@@ -66,12 +69,42 @@ string decryptCaesar(string s){
 		return decryptC(' ',max,s);
 	}
 	else{
-		sss.erase(std::remove(sss.begin(),sss.end(),max),sss.end()); 
+	//	sss.erase(std::remove(sss.begin(),sss.end(),max),sss.end()); 
 		q=true;
 		max=maxx(sss,q);
 		return decryptC('e',max,s);
 	}
 }
+
+string decryptChange(string s){
+	map<int,int> m;
+	list<int> words;
+    istringstream ist(s);
+    int tmp;
+    while(ist>>tmp)
+        words.push_back(tmp);
+        
+    double n=0;    
+    for(auto it=words.begin();it!=words.end();++it){
+    	m[*it]++;n++;}
+    	
+    int maxs=0,maxf;
+    
+	for(auto it=m.begin();it!=m.end();++it){
+		if(it->second>maxs){
+			maxf=it->first;
+			maxs=it->second;
+		}
+		cout<<it->first<<" "<<double(it->second/n)<<"\n";
+	}
+	cout<<"max:"<<maxf<<"\n";
+	
+	string ss;
+	for(auto it=words.begin();it!=words.end();++it)
+		ss+=char(*it);
+	return ss;	
+}
+
 
 int main (){    
 
@@ -80,9 +113,10 @@ int main (){
 	getline (f,s,'\0');
 	f.close();
 	
+	s=decryptChange(s);
+	
 	s=decryptCaesar(s);
 	
 	save(s,"2.txt");
-	
  	system("pause");
 }
