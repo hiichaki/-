@@ -4,6 +4,8 @@
 #include <iterator>
 #include <sstream>
 using namespace std;
+
+
 int main(){
 	ifstream f("2.txt");
 	string s;
@@ -19,8 +21,9 @@ int main(){
         
 	vector<int>letter;
 	copy(istream_iterator<int>(f), istream_iterator<int>(), back_inserter(letter));
-	for(auto c:letter)
-		s+=char((c-b)/a);
+	for(auto c:letter){
+		s+=(((c-b)/a));
+	}
 
 	cout<<s;
 

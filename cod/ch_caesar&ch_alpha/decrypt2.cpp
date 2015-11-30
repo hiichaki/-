@@ -60,7 +60,7 @@ string decrypt(string s,int q,string key){
 }
 
 int main(){
-	ifstream f("2.txt");
+	ifstream f("22.txt");
 	string s,key;
 	int q;
 	f>>q>>key;
