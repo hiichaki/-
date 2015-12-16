@@ -1,10 +1,12 @@
 #include <iostream>
 #include <map>
 #include <set>
+#include <vector>
 #include <algorithm>
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <fstream>
 using namespace std;
 
 string alpha(){
@@ -34,7 +36,7 @@ map<char,int> fill(){
 	for(int i=1;i<=a.size();++i)
 		q[i-1]=i;
 	
-	random_shuffle(q,q+a.size());
+//	random_shuffle(q,q+a.size());
 	
 	map<char,int> m;
 	
@@ -60,11 +62,26 @@ int Fi(int p,int q){
 	return (p-1)*(q-1);
 }
 
+void fail(int q){
+	for(int i=0;i<q;++i)
+		cout<<rand()%100<<" ";
+	cout<<"\n";
+	for(int i=0;i<q;++i)
+		cout<<char(rand()%100);
+}
+
 bool isSimple(int n){
     for(int i=2;i<=n/2;i++) 
 		if(n%i==0) 
 			return 0;
 	return 1;
+}
+
+bool check(int *q){
+	if(q[0]!=8||q[1]!=20||q[2]!=31)
+		return 0;
+	else
+		return 1;	
 }
 
 int genE(int f){
@@ -103,57 +120,66 @@ int decrypt(int c,int d,int n){
 
 int main(){	
 	srand(time(NULL));
+	string s;
+	int k[3];
+	cout<<"k(3):";
+	for(int i=0;i<3;++i)
+		cin>>k[i];
 	
-	string s="khapko";
+	
+			
 	map<char,int>m;
 	
 	m=fill();
-	show(m);	
+//	show(m);	
 	
-	int p=3,q=11,n,f;
+	int p=3,q=11,n,F;
 	
 	n=abs(p*q);
-	f=Fi(p,q);
+	F=Fi(p,q);
 	
-	cout<<"\nFi:"<<f
-		<<"\nn:"<<n<<"\n\n"
-		<<"(E*d)%Fi=1\n";
+//	cout<<"\nFi:"<<f
+//		<<"\nn:"<<n<<"\n\n"
+//		<<"(E*d)%Fi=1\n";
 		
 	int E,d;
 	
-	E=genE(f);
+//	E=genE(f);
 	E=3;
-	d=genD(E,f);
+//	d=genD(E,f);
 	d=7;
 	
-	unsigned long long c[s.size()];
+	vector<int> v;
 	
-	cout<<s
-		<<"\nchanged: ";
-	for(int i=0;i<s.length();++i){
-		auto it=m.find(s[i]);
-		c[i]=crypt(it->second,E,n);
-		cout<<it->second<<" ";
+	ifstream f("2.txt");
+	int tmp;
+	while(!f.eof()){
+		f>>tmp;
+		v.push_back(tmp);
+	}
+	if(!check(k)){
+		fail(v.size());
+		return 0;
 	}
 
-	cout<<"\ncrypt:   ";
 	
-	for(int i=0;i<s.length();++i)
+	int c[v.size()];
+	int i=0;
+	for(vector<int>::iterator it=v.begin();it<v.end();++it){
+		c[i]=decrypt(*it,d,n);
 		cout<<c[i]<<" ";
-	
-	
-	cout<<"\n\nplease wait...\n\ndecrypt: ";
-	
-	for(int i=0;i<s.length();++i){
-		c[i]=decrypt(c[i],d,n);
-		cout<<c[i]<<" ";
+		i++;
 	}
 	
 	cout<<"\n\n";
-	
-	for(int i=0;i<s.size();++i)
+	ofstream ff("2.txt");
+	for(int i=0;i<v.size()-1;++i)
 		for(auto it=m.begin();it!=m.end();++it)
-			if(c[i]==it->second)
+			if(c[i]==it->second){
 				cout<<it->first;
+				ff<<it->first;
+			}
+	
+					
 	cout<<"\n";
 }

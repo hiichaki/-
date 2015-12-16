@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <fstream>
 using namespace std;
 
 string alpha(){
@@ -34,7 +35,7 @@ map<char,int> fill(){
 	for(int i=1;i<=a.size();++i)
 		q[i-1]=i;
 	
-	random_shuffle(q,q+a.size());
+//	random_shuffle(q,q+a.size());
 	
 	map<char,int> m;
 	
@@ -102,38 +103,49 @@ int decrypt(int c,int d,int n){
 }
 
 int main(){	
-	srand(time(NULL));
+//	srand(time(NULL));
+	ifstream f("1.txt");
+	string s;
+	getline(f,s,'\0');
+	int k[3];
 	
-	string s="khapko";
 	map<char,int>m;
 	
 	m=fill();
 	show(m);	
-	
-	int p=3,q=11,n,f;
+	cout<<"k:";
+	for(int c:k){
+		c=rand()%33;	
+		cout<<c<<" ";
+	}
+	cout<<"\n";
+	int p=3,q=11,n,F;
 	
 	n=abs(p*q);
-	f=Fi(p,q);
+	F=Fi(p,q);
 	
-	cout<<"\nFi:"<<f
-		<<"\nn:"<<n<<"\n\n"
-		<<"(E*d)%Fi=1\n";
+//	cout<<"\nFi:"<<f
+//		<<"\nn:"<<n<<"\n\n"
+//		<<"(E*d)%Fi=1\n";
 		
 	int E,d;
 	
-	E=genE(f);
+//	E=genE(f);
 	E=3;
-	d=genD(E,f);
+//	d=genD(E,f);
 	d=7;
 	
 	unsigned long long c[s.size()];
 	
 	cout<<s
 		<<"\nchanged: ";
+		
+	ofstream ff("2.txt");	
 	for(int i=0;i<s.length();++i){
 		auto it=m.find(s[i]);
 		c[i]=crypt(it->second,E,n);
 		cout<<it->second<<" ";
+		ff<<c[i]<<" ";	
 	}
 
 	cout<<"\ncrypt:   ";
@@ -141,19 +153,4 @@ int main(){
 	for(int i=0;i<s.length();++i)
 		cout<<c[i]<<" ";
 	
-	
-	cout<<"\n\nplease wait...\n\ndecrypt: ";
-	
-	for(int i=0;i<s.length();++i){
-		c[i]=decrypt(c[i],d,n);
-		cout<<c[i]<<" ";
-	}
-	
-	cout<<"\n\n";
-	
-	for(int i=0;i<s.size();++i)
-		for(auto it=m.begin();it!=m.end();++it)
-			if(c[i]==it->second)
-				cout<<it->first;
-	cout<<"\n";
 }
