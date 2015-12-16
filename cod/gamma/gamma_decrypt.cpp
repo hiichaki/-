@@ -78,7 +78,7 @@ bool isSimple(int n){
 }
 
 bool check(int *q){
-	if(q[0]!=8||q[1]!=20||q[2]!=31)
+	if(q[0]!=15||q[1]!=7||q[2]!=16)
 		return 0;
 	else
 		return 1;	

@@ -18,6 +18,7 @@ int main(){
 	string k;
 	cout<<"key:";
 	cin>>k;
+	cout<<"\n";
 	int n=s.length()/k.length(),
 		m=k.length();
 		

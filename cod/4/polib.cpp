@@ -20,7 +20,6 @@ char crypt(char a[][6],char q){
 					return	a[0][j];				
 }
 
-
 int main(){
 	char a[5][6];
 	string aa=alpha(),s;
@@ -36,7 +35,7 @@ int main(){
 		cout<<"\n";
 	}
 	string ss="";
-	
+	cout<<"\n";
 	for(int i=0;i<s.length();++i)
 		ss+=crypt(a,s[i]);
 	

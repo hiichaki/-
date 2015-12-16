@@ -107,6 +107,7 @@ int main(){
 	ifstream f("1.txt");
 	string s;
 	getline(f,s,'\0');
+	f.close();
 	int k[3];
 	
 	map<char,int>m;
@@ -115,7 +116,7 @@ int main(){
 	show(m);	
 	cout<<"k:";
 	for(int c:k){
-		c=rand()%33;	
+		c=rand()%26;	
 		cout<<c<<" ";
 	}
 	cout<<"\n";
@@ -147,7 +148,7 @@ int main(){
 		cout<<it->second<<" ";
 		ff<<c[i]<<" ";	
 	}
-
+	ff.close();
 	cout<<"\ncrypt:   ";
 	
 	for(int i=0;i<s.length();++i)

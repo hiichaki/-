@@ -14,6 +14,8 @@ int main(){
 	ifstream f("2.txt");
 
     string k="encrypting",key="";
+    cout<<"key:";
+    cin>>k;
     string s;
     getline(f,s,'\0');
 
