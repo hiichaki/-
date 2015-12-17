@@ -1,22 +1,75 @@
 #include <iostream>
+#include <stdlib.h>
+#include <windows.h>
+#include <string>
+#include <time.h>
 #include <algorithm>
-#define n 3
 using namespace std;
 
+void SetColor(int text, int background){
+	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
+}
+
+int qwe(){
+	int q;
+	cout<<"n:";
+	cin>>q;
+	return q;
+}
+
+int n=qwe();
+
 class Transp{
-	int a[n][n]={{5,3,1},{2,4,1},{3,3,2}},
-		z[n]={100,130,220},
-		p[n]={210,100,140},
-		zp[n][n];
+	int *z = new int [n];
+	int *p = new int [n];
+	int **a = new int *[n];
+	int **zp = new int *[n];
+	
 	int sum;
 	
 	public:
 		
 	Transp(){
-		sum=0;		
-		for(int i=0;i<n;++i)
-			for(int j=0;j<n;++j)
+		sum=0;	
+		
+		for (int i=0; i<n; i++){
+        	a[i] = new int [n];
+        	zp[i] = new int [n];
+		}
+		
+		for(int i=0;i<n;++i){
+			z[i]=rand()%250;
+			p[i]=rand()%250;
+			for(int j=0;j<n;++j){
+				a[i][j]=rand()%7;
 				zp[i][j]=0;
+			}
+		}
+	}
+	
+	void show(){
+		for(int i=0;i<n;++i){
+			for(int j=0;j<n;++j){
+				SetColor(7,0);
+				if(zp[i][j])
+					SetColor(10,0);
+				cout<<zp[i][j]<<"\t";
+			}
+			SetColor(12,0);	
+			cout<<z[i]<<"\n";	
+			SetColor(7,0);
+		}
+		SetColor(12,0);
+		for(int i=0;i<n;++i)
+			cout<<p[i]<<"\t";
+		cout<<"\n\n";
+		SetColor(7,0);
+	}
+	
+	void showZ(){
+		for(int i=0;i<n;++i)
+			cout<<p[i]<<" ";
 	}
 	
 	void showA(){
@@ -56,21 +109,19 @@ class Transp{
 			}
 	}
 	
-//	void calc2(){
-//		int q,j=0;
-//		for(int i=0;i<n;++i){
-//			q=min(z[i],p[j]);
-//				
-//		}
-//			
-//	}
-	
-	
 };
 
 int main(){
+	srand(time(NULL));
+	
 	Transp q;
+	
+	string s="mode con cols="+to_string(n*10-n/2);
+	const char * c = s.c_str();
+	system(c);
+	
+	q.show();
 	q.calc();
-	q.showZP();
+	q.show();
 	q.showSum();
 }
