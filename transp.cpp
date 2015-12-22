@@ -24,6 +24,7 @@ class Transp{
 	int *z = new int [n];
 	int *p = new int [n];
 	int **a = new int *[n];
+	int **aa = new int *[n];
 	int **zp = new int *[n];
 	
 	int sum;
@@ -35,6 +36,7 @@ class Transp{
 		
 		for (int i=0; i<n; i++){
         	a[i] = new int [n];
+        	aa[i] = new int [n];
         	zp[i] = new int [n];
 		}
 		
@@ -43,6 +45,7 @@ class Transp{
 			p[i]=rand()%250;
 			for(int j=0;j<n;++j){
 				a[i][j]=rand()%7;
+				aa[i][j]=a[i][j];
 				zp[i][j]=0;
 			}
 		}
@@ -75,9 +78,10 @@ class Transp{
 	void showA(){
 		for(int i=0;i<n;++i){
 			for(int j=0;j<n;++j)
-				cout<<a[i][j]<<" ";
+				cout<<aa[i][j]<<" ";
 			cout<<"\n";		
 		}
+		cout<<"\n";	
 	}	
 	
 	void showZP(){
@@ -109,6 +113,29 @@ class Transp{
 			}
 	}
 	
+	void calc2(){	
+		for(int q=0;q<n*n;++q){
+			int min=100,iz,jp;
+			for(int i=0;i<n;++i)
+				for(int j=0;j<n;++j)
+					if(min>a[i][j]&&a[i][j]!=-1){
+						min=a[i][j];
+						iz=i; jp=j;
+					}
+			if(p[jp]>=z[iz]) {
+	            zp[iz][jp]=z[iz];
+	            p[jp]-=z[iz];
+	            z[iz]=0;
+	        }
+	        if(p[jp]<z[iz]){
+	            z[iz]-=p[jp];
+	            zp[iz][jp]=p[jp];
+	            p[jp]=0;
+	        }
+	        sum+=zp[iz][jp]*a[iz][jp];
+			a[iz][jp]=-1;	
+		}
+	}
 };
 
 int main(){
@@ -121,7 +148,8 @@ int main(){
 	system(c);
 	
 	q.show();
-	q.calc();
+	q.calc2();
+	q.showA();
 	q.show();
 	q.showSum();
 }
