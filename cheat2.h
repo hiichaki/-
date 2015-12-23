@@ -9,6 +9,11 @@ using namespace std;
 	cout<<a+b;
  }
 
+void SetColor(int text, int background){
+	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
+}
+
  template<class qwe> void View(vector<qwe> v){
  	 typename vector<qwe> ::iterator iter=v.begin();
 	 while(iter!=v.end()){
