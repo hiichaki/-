@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <algorithm>
 using namespace std;
 
 string alpha(){
@@ -8,10 +7,6 @@ string alpha(){
 	for(int i=97;i<96+27;++i)
 		s+=char(i);
 	s+=" .,-";	
-	random_shuffle(s.begin(),s.end());
-	ofstream k("key_alpha.txt");
-	k<<s;
-	k.close();
 	return s;	
 }
 

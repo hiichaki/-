@@ -2,13 +2,13 @@
 #include <fstream>
 using namespace std;
 
-//string alpha(){
-//	string s;
-//	for(int i=97;i<96+27;++i)
-//		s+=char(i);
-//	s+=" .,-";	
-//	return s;	
-//}
+string alpha(){
+	string s;
+	for(int i=97;i<96+27;++i)
+		s+=char(i);
+	s+=" .,-";	
+	return s;	
+}
 
 char decrypt(char a[][6],char q){
 	for(int i=0;i<5;++i)
@@ -22,11 +22,7 @@ char decrypt(char a[][6],char q){
 
 int main(){
 	char a[5][6];
-	//string aa=alpha();
-	ifstream k("key_alpha.txt");
-	string aa;
-	getline(k,aa);
-	k.close();	
+	string aa=alpha();
 	string s;
 	ifstream f("2.txt");
 	getline(f,s,'\0');

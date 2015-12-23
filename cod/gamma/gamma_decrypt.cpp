@@ -78,7 +78,7 @@ bool isSimple(int n){
 }
 
 bool check(int *q){
-	if(q[0]!=15||q[1]!=7||q[2]!=16)
+	if(q[0]!=15&&q[1]!=7&&q[2]!=16)
 		return 0;
 	else
 		return 1;	
@@ -125,9 +125,7 @@ int main(){
 	cout<<"k(3):";
 	for(int i=0;i<3;++i)
 		cin>>k[i];
-	
-	
-			
+
 	map<char,int>m;
 	
 	m=fill();
@@ -161,7 +159,6 @@ int main(){
 		fail(v.size());
 		return 0;
 	}
-
 	
 	int c[v.size()];
 	int i=0;

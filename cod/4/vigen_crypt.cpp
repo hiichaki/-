@@ -41,10 +41,17 @@ int main(){
 //    show(qwe);
     
     string k="encrypting",key="";
+    cout<<"key:";
+    cin>>k;
     string s;
     ifstream f("1.txt");
     getline(f,s,'\0');
     f.close();
+    
+//    int i;
+//    while((i=s.find(' '))!=string::npos)
+//    	s.erase(i,1);
+    	
     for(int i=0,z=0;i<s.length();++i,++z){
     	if(z>k.length()-1)
     		z=0;

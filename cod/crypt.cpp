@@ -24,6 +24,6 @@ int main(){
 
 	s=cryptCaesar(s);
 	
-	save(s,"1.txt");
+	save(s,"2.txt");
 
 }

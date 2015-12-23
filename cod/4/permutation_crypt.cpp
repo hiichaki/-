@@ -3,7 +3,6 @@
 #include <algorithm>
 using namespace std;
 
-
 void show(string q){
 	for(int i=0;i<q.length();++i)
 		cout<<q[i]<<" ";
