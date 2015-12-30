@@ -31,7 +31,7 @@ class Big{
 		
 		void show(){
 			bool q=0;
-			if(sign==string::npos)
+			if(sign==-1)
 				cout<<"-";
 			for(int i=0;i<n;++i){
 				if(a[i]!=0)
@@ -63,7 +63,7 @@ class Big{
 			for(size_t i=0;i<n;++i)
 				this->a[i]=q.a[i];
 		}
-		
+		//TODO: --
 		friend bool operator<(Big x,Big y){
 			if(x.sign<y.sign)
 				return 1;
@@ -152,7 +152,7 @@ class Big{
 			return c;
 			
 		}
-	
+		
 		friend Big operator-(Big x,Big y){
 			Big c;
 			int m;
@@ -211,17 +211,45 @@ class Big{
 			return c;
 		}
 			
-		friend Big operator*(Big x,Big y){
-			
-		}	
+//		friend Big operator*(Big x,Big y){
+//			Big c;
+//			int m,n;
+//			
+//			n=x.n;
+//			m=y.n;
+//			
+//			int p,u=0,tmp;
+//			
+//			reverse(x.a,x.a+x.n);
+//			reverse(y.a,y.a+y.n);
+//			
+//			for(int i=0;i<n;++i){
+//				for(int j=0;j<m;++j){
+//					tmp=x.a[i]*y.a[j];
+//					p=tmp%10;
+//					cout<<"tmp:"<<tmp<<"\n";
+//					c.a[i]=p+u;
+//					cout<<"c:"<<c.a[i]<<"\n";
+//					u=0;
+//					if(c.a[i]>9){
+//						c.a[i]-=10;
+//						u++;	
+//					}
+//					if(tmp>9)
+//						u+=tmp/10;
+//				}
+//			}
+//			reverse(c.a,c.a+c.n);
+//			return c;
+//		}	
+		
 };
 
-
-
 int main(){
-Big a("333333333333333333333333333333333333333333333333333333333333333"),b("1111111111111111111111111111111111111111111111111111111111111111"),c;
+Big a("12"),b("3"),c;
 a.show();
 b.show();
-(a-b).show();
+
+(a+b).show();
 }
 
