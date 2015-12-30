@@ -30,10 +30,15 @@ class Big{
 		}
 		
 		void show(){
+			bool q=0;
 			if(sign==string::npos)
 				cout<<"-";
-			for(int i=0;i<n;++i)
-				cout<<a[i];	
+			for(int i=0;i<n;++i){
+				if(a[i]!=0)
+					q=1;				
+				if(q)
+					cout<<a[i];		
+			}
 			cout<<"\n";
 		}
 		
@@ -117,10 +122,12 @@ class Big{
 			c.n=m;
 			
 			if(x.sign==-1&&y.sign==1){
+				x.sign=1;
 				return y-x;
 			}
 			
 			if(x.sign==1&&y.sign==-1){
+				y.sign=1;
 				return x-y;
 			}	
 			
@@ -212,7 +219,7 @@ class Big{
 
 
 int main(){
-Big a("11111111111111111111111"),b("22222222222222222222222"),c;
+Big a("333333333333333333333333333333333333333333333333333333333333333"),b("1111111111111111111111111111111111111111111111111111111111111111"),c;
 a.show();
 b.show();
 (a-b).show();
