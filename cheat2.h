@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
+#include <algorithm>
 #include <windows.h>
 #include <math.h>
 using namespace std;
@@ -9,7 +10,27 @@ using namespace std;
 	cout<<a+b;
  }
 
-void SetColor(int text, int background){
+enum ConsoleColor{
+	Black         = 0,
+    Blue          = 1,
+    Green         = 2,
+    Cyan          = 3,
+    Red           = 4,
+    Magenta       = 5,
+    Brown         = 6,
+    LightGray     = 7,
+    DarkGray      = 8,
+    LightBlue     = 9,
+    LightGreen    = 10,
+    LightCyan     = 11,
+    LightRed      = 12,
+    LightMagenta  = 13,
+    Yellow        = 14,
+    White         = 15
+};
+// 7,0 default
+
+void setColor(int text=7, int background=0){
 	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
 }
@@ -119,7 +140,7 @@ template<class qwe,size_t N,size_t M> void View(qwe (&a)[N][M]) {
 	}
 }
 
-template <typename T, size_t N> size_t ArraySize(const T (&)[N]){ 
+template <typename T, size_t N> size_t arraySize(const T (&)[N]){ 
  return N; 
 }
 
@@ -178,15 +199,15 @@ void showFibo(int n){
 
 template <class qwe, size_t N> double sum(qwe (&a)[N]){
 	qwe x=0;
-		for(int i=0;i<N;++i)
-			x+=a[i];
+	for(int i=0;i<N;++i)
+		x+=a[i];
 	return x;
 }
 
 template <class qwe, size_t N> double mult(qwe (&a)[N]){
 	qwe x=1;
-		for(int i=0;i<N;++i)
-			x*=a[i];
+	for(int i=0;i<N;++i)
+		x*=a[i];
 	return x;
 }
 
@@ -197,7 +218,45 @@ bool neg(double arg){
 }
 
 double abss(double a){
-		return neg(a)?a*-1:a;
+	return neg(a)?a*-1:a;
+}
+
+template<class qwe> bool isOdd(qwe a){
+	string q=to_string(a);
+	char qq=q[q.size()-1];
+	int aa = qq - '0';
+	if(aa%2==0)
+		return 0;
+	else
+		return 1;
+}
+
+bool isOdd(string q){
+	char qq=q[q.size()-1];
+	int aa = qq - '0';
+	if(aa%2==0)
+		return 0;
+	else
+		return 1;
+}
+
+template<class qwe> bool isEven(qwe a){
+	string q=to_string(a);
+	char qq=q[q.size()-1];
+	int aa = qq - '0';
+	if(aa%2==0)
+		return 1;
+	else
+		return 0;
+}
+
+bool isEven(string q){
+	char qq=q[q.size()-1];
+	int aa = qq - '0';
+	if(aa%2==0)
+		return 1;
+	else
+		return 0;
 }
 
 
@@ -558,8 +617,6 @@ class list1{
 				insert(q,b);
 			}
 		}
-	
-	
 	
 		qwe max(){
 		  bool f=0;
