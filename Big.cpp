@@ -219,47 +219,49 @@ class Big{
 			*this=*this+Big("1");
 		}
 		
-		friend Big operator*(Big x,Big y){
-			Big c;
-			int m,n;
-			
-			n=x.n;
-			m=y.n;
-			
-			int p,u=0,tmp;
-			
-			reverse(x.a,x.a+x.n);
-			reverse(y.a,y.a+y.n);
-			
-			for(int i=0,z;i<n;++i){
-				for(int j=0;j<m;++j){
-					tmp=x.a[i]*y.a[j];
-					p=tmp%10;
-					cout<<"tmp:"<<tmp<<"\n";
-					c.a[z]=p+u;
-					cout<<"c:"<<c.a[i]<<"\n";
-					u=0;
-					if(c.a[z]>9){
-						c.a[z]-=10;
-						u++;	
-					}
-					z++;
-					if(tmp>9)
-						u+=tmp/10;
-				}
-				c.n=z;
-			}
-			reverse(c.a,c.a+c.n);
-			return c;
-		}	
+//		friend Big operator*(Big x,Big y){
+//			Big c;
+//			int m,n;
+//			
+//			n=x.n;
+//			m=y.n;
+//			
+//			int p,u=0,tmp;
+//			
+//			reverse(x.a,x.a+x.n);
+//			reverse(y.a,y.a+y.n);
+//			
+//			for(int i=0,z;i<n;++i){
+//				for(int j=0;j<m;++j){
+//					tmp=x.a[i]*y.a[j];
+//					p=tmp%10;
+//					cout<<"tmp:"<<tmp<<"\n";
+//					c.a[z]=p+u;
+//					cout<<"c:"<<c.a[i]<<"\n";
+//					u=0;
+//					if(c.a[z]>9){
+//						c.a[z]-=10;
+//						u++;	
+//					}
+//					z++;
+//					if(tmp>9)
+//						u+=tmp/10;
+//				}
+//				c.n=z;
+//			}
+//			reverse(c.a,c.a+c.n);
+//			return c;
+//		}	
 		
 };
 
 int main(){
-Big a("12"),b("8"),c;
+Big a("12"),b("8");
+
 a.show();
 b.show();
 
-(a*b).show();
+//(a*b).show();
+
 }
 
