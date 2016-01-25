@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="refresh" content="10">
+		<title>Title Page</title>
+	</head>
+	<body>
+
+        <script>
+            var data;
+            function f(filedata) {
+                data = filedata;
+            }
+            
+            function postloadfunction() {
+
+            }
+
+            function load_json(src) {
+              var head = document.getElementsByTagName('head')[0];
+
+              //use class, as we can't reference by id
+              var element = head.getElementsByClassName("json")[0];
+
+              try {
+                element.parentNode.removeChild(element);
+              } catch (e) {
+                
+              }
+
+              var script = document.createElement('script');
+              script.type = 'text/javascript';
+              script.src = src;
+              script.className = "json";
+              script.async = false;
+              head.appendChild(script);
+
+              //call the postload function after a slight delay to allow the json to load
+              window.setTimeout(postloadfunction, 100);
+            }
+            load_json("file.js");
+        </script>
+
+
+		 <script src="https://code.highcharts.com"></script>
+		 <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script> 
+
+		 
+		 <script type='text/javascript' src="jquery-2.2.0.min.js"></script>	
+		 <script type='text/javascript' src="js/highcharts.js"></script>
+		
+
+		<script src="2.js"></script>
+		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		
+		<input type="button">
+	</body>
+</html>

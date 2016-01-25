@@ -259,15 +259,67 @@ bool isEven(string q){
 		return 0;
 }
 
+/////sort.begin//////
+template<typename T>
+void selection_sort(T array[], size_t size){
+    for (size_t idx_i = 0; idx_i < size - 1; idx_i++){
+        size_t min_idx = idx_i;
+        for (size_t idx_j = idx_i + 1; idx_j < size; idx_j++){
+            if (array[idx_j] < array[min_idx])
+               min_idx = idx_j;    
+    	}
+        if (min_idx != idx_i)
+            swap(array[idx_i], array[min_idx]);
+    }
+}
+
+template <typename T>
+void shell_sort(T *A, unsigned N){
+	unsigned i,j,k;
+	T t;
+	for(k = N/2; k > 0; k /=2)
+        for(i = k; i < N; i+=1){
+            t = A[i];
+            for(j = i; j>=k; j-=k){
+                if(t < A[j-k])
+                    A[j] = A[j-k];
+                else
+                    break;
+            }
+            A[j] = t;
+        }
+}
+
+template <typename T>
+void bubble_sort(T *a, size_t n){
+	for(int i=0; i<n; ++i)
+    	for(int j=i+1; j<n; ++j)
+ 	   		if(a[j]<a[i])
+				swap(a[i],a[j]);
+}
+
+template<typename T>
+void insertion_sort(T* arr,size_t n){
+	for(int i=1;i<n;i++){
+		for(int j=i; j>0 && arr[j-1]>arr[j];j--){
+			int tmp=arr[j-1];
+			arr[j-1]=arr[j];
+			arr[j]=tmp;
+		}
+	}
+}
+
+/////sort.end//////
+
 
 
 
 void DEMACIA(){ 
-			for(int i=0;i<30;++i){
-				for(int j=0;j<7;++j)
-					cout<<"DEMACIA!!! ";
-				cout<<endl;
-			}	
+	for(int i=0;i<30;++i){
+		for(int j=0;j<7;++j)
+			cout<<"DEMACIA!!! ";
+		cout<<endl;
+	}	
 }	
 
 void timer(int hour,int min,int sec){
@@ -379,6 +431,31 @@ void lk(){
     Beep(329, 500);    
 }
 
+void imperor(){
+	int a = 750; 
+ 
+     Beep(392, a); 
+     Beep(392, a); 
+     Beep(392, a); 
+     Beep(311, a*0.75); 
+     Beep(466, a*0.25); 
+ 
+     Beep(392, a); 
+     Beep(311, a*0.75); 
+     Beep(466, a*0.25); 
+     Beep(392, a*2); 
+ 
+     Beep(587, a); 
+     Beep(587, a); 
+     Beep(587, a); 
+     Beep(622, a*0.75); 
+     Beep(466, a*0.25); 
+ 
+     Beep(369, a); 
+     Beep(311, a*0.75); 
+     Beep(466, a*0.25); 
+     Beep(392, a*2); 
+}
 
 
 
