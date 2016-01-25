@@ -1,5 +1,5 @@
 $(function () {
-    $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=usdeur.json&callback=?', function (data) {
+
         var detailChart;
 
         $(document).ready(function () {
@@ -235,5 +235,5 @@ $(function () {
             // create master and in its callback, create the detail chart
             createMaster();
         });
-    });
+    
 });
