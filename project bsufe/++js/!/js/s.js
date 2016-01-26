@@ -32,19 +32,33 @@ var data;
     load_json("file.js");
 
 
-var q=1;
-function sr(){
-  var timerId; 
-  if(q){
-    timerId = setInterval(function() {
-      location.reload();
-    }, 2000);
-    alert('123');
-    q=0;
-  }else{
-    clearInterval(timerId);
+// var q=1;
+// function sr(){
+//   var timerId; 
+//   if(q){
+//     timerId = setInterval(function() { location.reload(); }, 2000);
+//     alert('123');
+//     q=0;
+//   }else{
+//     clearInterval(timerId);
+//     alert('azaza');
+//     q=1;
+//   }
+// }
 
-    alert('azaza');
-    q=1;
-  }
-}
+// $('body').append(
+//        $('<button>').text('Start').addClass('push-to-start'));
+// $('body').append(
+//        $('<button>').text('Stop').addClass('push-to-stop'));
+// $('.push-to-start').hide();
+// $(document).on('click','push-to-stop',function(){
+//   $('me').remove();
+//   $('.push-to-start').show();
+//   $('.push-to-stop').hide();
+// });
+// $(document).on('click','push-to-start',function(){
+//   $('body').append(
+//       $('<meta>').attr('http-equiv','refresh').attr('content','2').attr('id','me'));
+//   $('.push-to-start').hide();
+//   $('.push-to-stop').show();
+// });

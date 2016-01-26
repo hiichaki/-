@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- <meta http-equiv="refresh" content="10"> -->
+		<meta  id="me" http-equiv="refresh" content="10"> 
 		<title>Title Page</title>
 	</head>
 	<body>
@@ -25,10 +25,27 @@
 
     <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		<a href="year.html">year</a>
+
     <input type="button" value="Reload Page" onClick="document.location.reload(true)">
-    <input id="in" type="button" onclick="sr()" value="stop"/>
-    <input type="button" onclick="ChangeText()" value="Изменить текст" />
-    <p id="p1">Привет мир!</p>
+
+    <button class="push-to-start" style="display: none">Start</button>
+    <button class="push-to-stop">Stop</button>
+
+  <script>  
+  $(document).on('click','.push-to-stop',function(){
+    $('me').remove();
+    $('.push-to-start').show();
+    $('.push-to-stop').hide();
+  })
+  $(document).on('click','.push-to-start',function(){
+    $('head').append(
+        $('<meta>').attr('http-equiv','refresh').attr('content','10').attr('id','me'));
+    $('.push-to-start').hide();
+    $('.push-to-stop').show();
+  });
+  </script>
+
+
 
 	</body>
 </html>
