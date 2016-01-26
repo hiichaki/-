@@ -32,10 +32,10 @@ $(function () {
                         enabled: false
                     },
                     title: {
-                        text: 'Historical USD to EUR Exchange Rate'
+                        text: 'График'
                     },
                     subtitle: {
-                        text: 'Select an area by dragging across the lower chart'
+                        text: 'выбор по мастер полосе'
                     },
                     xAxis: {
                         type: 'datetime'
@@ -49,8 +49,8 @@ $(function () {
                     tooltip: {
                         formatter: function () {
                             var point = this.points[0];
-                            return '<b>' + point.series.name + '</b><br/>' + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>' +
-                                '1 USD = ' + Highcharts.numberFormat(point.y, 2) + ' EUR';
+                            return Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>' +
+                                't ' + Highcharts.numberFormat(point.y, 0);
                         },
                         shared: true
                     },

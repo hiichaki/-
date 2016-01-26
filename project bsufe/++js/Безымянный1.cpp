@@ -21,13 +21,21 @@ close(q);
 
 int main(){
 	long size;
+	int t=rand()%15,q;
 	ofstream f("file.js");
+	
 	SYSTEMTIME systime;
 		GetLocalTime(&systime);
-		f<<"f([[Date.UTC("<<systime.wYear<<","<<systime.wMonth<<","<<systime.wDay<<","<<systime.wHour<<","<<systime.wMinute<<","<<systime.wSecond<<"),"<<rand()<<"]\n]);";	
+		f<<"f([[Date.UTC("<<systime.wYear<<","<<systime.wMonth<<","<<systime.wDay<<","<<systime.wHour<<","<<systime.wMinute<<","<<systime.wSecond<<"),"<<t<<"]\n]);";	
 	f.close();
 	
-	while(1){		
+	while(1){	
+		q=rand()%3;
+		switch(q){
+			case 0: t++;break;
+			case 1: t--;break;
+			case 2:     break;	
+		}
 		ifstream ff("file.js");
 		ff.seekg (0,ios::end);
 		size = ff.tellg();	
@@ -35,7 +43,7 @@ int main(){
 		ff.close();
 		ofstream fff("file.js",ios::app);
 		GetLocalTime(&systime);
-		fff<<",[Date.UTC("<<systime.wYear<<","<<systime.wMonth<<","<<systime.wDay<<","<<systime.wHour<<","<<systime.wMinute<<","<<systime.wSecond<<"),"<<rand()<<"]\n]);";	
+		fff<<",[Date.UTC("<<systime.wYear<<","<<systime.wMonth<<","<<systime.wDay<<","<<systime.wHour<<","<<systime.wMinute<<","<<systime.wSecond<<"),"<<t<<"]\n]);";	
 		fff.close();
 		timer(0,0,10);	
 		

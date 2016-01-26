@@ -1,51 +1,15 @@
-<!DOCTYPE HTML>
-<html lang="ru">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta  id="me" http-equiv="refresh" content="10"> 
-		<title>Title Page</title>
-	</head>
-	<body>
+<!DOCTYPE html>
+<html lang="en">
 
-      
- <script src="js/s.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
 
-		 <script src="https://code.highcharts.com"></script>
-		 <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script> 
-
-		 
-		 <script type='text/javascript' src="js/jquery-2.2.0.min.js"></script>	
-		 <script type='text/javascript' src="js/highcharts.js"></script>
-		
-
-		<script src="js/1.js"></script>
-   
-
-    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-		<a href="year.html">year</a>
-
-    <input type="button" value="Reload Page" onClick="document.location.reload(true)">
-
-    <button class="push-to-start" style="display: none">Start</button>
-    <button class="push-to-stop">Stop</button>
-
-  <script>  
-  $(document).on('click','.push-to-stop',function(){
-    $('me').remove();
-    $('.push-to-start').show();
-    $('.push-to-stop').hide();
-  })
-  $(document).on('click','.push-to-start',function(){
-    $('head').append(
-        $('<meta>').attr('http-equiv','refresh').attr('content','10').attr('id','me'));
-    $('.push-to-start').hide();
-    $('.push-to-stop').show();
-  });
-  </script>
-
-
-
-	</body>
+<body>
+	<iframe src="1.html" frameborder="0"></iframe>
+	<iframe src="2.html" frameborder="0"></iframe>
+</body>
 </html>

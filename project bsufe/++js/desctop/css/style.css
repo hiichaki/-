@@ -1,0 +1,11 @@
+iframe{
+	width:100%;
+	min-width: 310px; 
+	height: 450px; 
+	margin: 0 auto;
+}
+
+p{
+    font-family: cursive;
+    font-size: 30px;
+}
