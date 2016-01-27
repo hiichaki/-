@@ -71,37 +71,56 @@ var data;
             $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
         });
     });
+     
+//TODO:
+     function asd(){
+      console.log(document.getElementById(date1.value));
+     }
 
-    
 
-
-// var q=1;
-// function sr(){
-//   var timerId; 
-//   if(q){
-//     timerId = setInterval(function() { location.reload(); }, 2000);
-//     alert('123');
-//     q=0;
-//   }else{
-//     clearInterval(timerId);
-//     alert('azaza');
-//     q=1;
-//   }
-// }
-
-// $('body').append(
-//        $('<button>').text('Start').addClass('push-to-start'));
-// $('body').append(
-//        $('<button>').text('Stop').addClass('push-to-stop'));
-// $('.push-to-start').hide();
-// $(document).on('click','push-to-stop',function(){
-//   $('me').remove();
+// var q=false;
+// var x = document.getElementById('frame1');
+// $(document).on('click','.push-to-stop',function(){
+//   q=false;
 //   $('.push-to-start').show();
 //   $('.push-to-stop').hide();
 // });
-// $(document).on('click','push-to-start',function(){
-//   $('body').append(
-//       $('<meta>').attr('http-equiv','refresh').attr('content','2').attr('id','me'));
+// $(document).on('click','.push-to-start',function(){
+//   q=true;
+//   setInterval(function() {
+//     if(q){
+//      x.src=x.src;
+//     }
+//   }, 10000);  
 //   $('.push-to-start').hide();
 //   $('.push-to-stop').show();
 // });
+
+
+// var w=false;
+// var y = document.getElementById('frame2');
+// $(document).on('click','.push-to-stop2',function(){
+//   w=false;
+//   $('.push-to-start2').show();
+//   $('.push-to-stop2').hide();
+// });
+// $(document).on('click','.push-to-start2',function(){
+//   w=true;
+//   setInterval(function() {
+//     if(w){
+//      y.src=y.src;
+//     }
+//   }, 10000);  
+//   $('.push-to-start2').hide();
+//   $('.push-to-stop2').show();
+// });
+
+// function doIt(bId){
+//     var fireOnThis = document.getElementById(bId);
+//     var evObj = document.createEvent('MouseEvents');
+//     evObj.initEvent( 'click', true, true );
+//     if((q&&bId=='b1')||(w&&bId=='b2')){
+//       fireOnThis.dispatchEvent(evObj);
+//     }
+// }   
+
