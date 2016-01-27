@@ -1,47 +1,77 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Виджет Bootstrap datetimepicker</title>      
+    <title>Виджет Bootstrap datetimepicker</title>
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
-  </head>
-  <body style="margin:40px;">
-  <div class="container">
-        <div class='col-md-5'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker8">
+                        <input type="text" class="form-control" />
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class='col-md-5'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker2'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker9">
+                        <input type="text" class="form-control" />
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-  <script type="text/javascript">
-    $(function () {
-      $('#datetimepicker1').datetimepicker({language: 'ru',minuteStepping:10,defaultDate:"09.01.2015",daysOfWeekDisabled:[0,6]});
-      $('#datetimepicker2').datetimepicker({language: 'ru'});
-    });
-  </script>
+ <!-- // <script src="js/s.js"></script> -->
 
-  </body>
+    <script type="text/javascript">
+     $(function () {
+    //Установим для виджета русскую локаль с помощью параметра language и значения ru
+    $('#datetimepicker8').datetimepicker(
+      {language: 'ru'}
+    );
+  });
+      $(function () {
+    //Установим для виджета русскую локаль с помощью параметра language и значения ru
+    $('#datetimepicker9').datetimepicker(
+      {language: 'ru'}
+    );
+  });
+    $(function() {
+        //Инициализация datetimepicker8 и datetimepicker9
+        $("#datetimepicker8").datetimepicker();
+        $("#datetimepicker9").datetimepicker();
+        //При изменении даты в 8 datetimepicker, она устанавливается как минимальная для 9 datetimepicker
+        $("#datetimepicker8").on("dp.change", function(e) {
+            $("#datetimepicker9").data("DateTimePicker").setMinDate(e.date);
+        });
+        //При изменении даты в 9 datetimepicker, она устанавливается как максимальная для 8 datetimepicker
+        $("#datetimepicker9").on("dp.change", function(e) {
+            $("#datetimepicker8").data("DateTimePicker").setMaxDate(e.date);
+        });
+    });
+   
+    </script>
+</body>
+
 </html>

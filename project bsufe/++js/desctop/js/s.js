@@ -35,9 +35,10 @@ var data;
     function unixtimetodate(uni) {
       var theDate = new Date(uni);
       theDate.setHours(theDate.getHours()-2);
+      // theDate.setMonth(theDate.getMonth()-1);
       dateString = theDate.toLocaleString();
 
-      console.log(dateString);
+      // console.log(dateString);
       return dateString;
     }
 
@@ -59,24 +60,86 @@ var data;
       document.getElementById('mValue').innerHTML='минимальная температура:'+'<b>'+m[1]+'</b></br>'+unixtimetodate(m[0]);
     }
 
-     $(function () {
-        $('#datetimepicker6').datetimepicker();
-        $('#datetimepicker7').datetimepicker({
-            useCurrent: false //Important! See issue #1075
-        });
-        $("#datetimepicker6").on("dp.change", function (e) {
-            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker7").on("dp.change", function (e) {
-            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-        });
-    });
-     
+
 //TODO:
      function asd(){
       console.log(document.getElementById(date1.value));
      }
 
+
+
+    function compare(){
+
+    }
+
+    $(function () {
+      $('#datetimepicker8').datetimepicker(
+        {language: 'ru',minuteStepping:10}
+      );
+       $('#datetimepicker9').datetimepicker(
+        {language: 'ru',minuteStepping:10}
+      );
+    });
+
+    $(function() {
+        //Инициализация datetimepicker8 и datetimepicker9
+        $("#datetimepicker8").datetimepicker();
+        $("#datetimepicker9").datetimepicker();
+        //При изменении даты в 8 datetimepicker, она устанавливается как минимальная для 9 datetimepicker
+        $("#datetimepicker8").on("dp.change", function(e) {
+            $("#datetimepicker9").data("DateTimePicker").setMinDate(e.date);
+        });
+        //При изменении даты в 9 datetimepicker, она устанавливается как максимальная для 8 datetimepicker
+        $("#datetimepicker9").on("dp.change", function(e) {
+            $("#datetimepicker8").data("DateTimePicker").setMaxDate(e.date);
+        });
+    });
+
+    $("#sectionMax").click(function () {
+      var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
+      var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
+      var m;  
+      var q=true;
+        for(i=0;i<data.length;++i){
+          if(unixtimetodate(data[i][0])>=firstDate){
+             if(q){
+              m=data[i];
+              q=false;
+             }
+             if(data[i][1]>m[1]) 
+                m=data[i];
+          }
+          if(unixtimetodate(data[i][0])>=secondDate){
+            break;
+          }
+        }
+        
+      document.getElementById('mValue').innerHTML='максимальная температура на промежутке </br>'+firstDate+' - '+secondDate
+      +' : '+'<b>'+m[1]+'</b></br>';
+    });
+
+    $("#sectionMin").click(function () {
+      var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
+      var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
+      var m;  
+      var q=true;
+        for(i=0;i<data.length;++i){
+          if(unixtimetodate(data[i][0])>=firstDate){
+             if(q){
+              m=data[i];
+              q=false;
+             }
+             if(data[i][1]<m[1]) 
+                m=data[i];
+          }
+          if(unixtimetodate(data[i][0])>=secondDate){
+            break;
+          }
+        }
+        
+      document.getElementById('mValue').innerHTML='минимальная температура на промежутке </br>'+firstDate+' - '+secondDate
+      +' : '+'<b>'+m[1]+'</b></br>';
+    });
 
 // var q=false;
 // var x = document.getElementById('frame1');
