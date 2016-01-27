@@ -10,6 +10,6 @@ p {
     font-size: 30px;
 }
 
-.btn {
+.btn-default, .btn-info {
     margin-left: 30px;
 }

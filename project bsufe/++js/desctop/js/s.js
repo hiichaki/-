@@ -43,6 +43,7 @@ var data;
     }
 
     function max (filedata) {
+      document.getElementById('mValue').innerHTML='';
       var m=data[0];
       for(var i=1;i<data.length;++i){
          if(data[i][1]>m[1]) 
@@ -52,6 +53,7 @@ var data;
     }
 
     function min (filedata) {
+      document.getElementById('mValue').innerHTML='';
       var m=data[0];
       for(var i=1;i<data.length;++i){
          if(data[i][1]<m[1]) 
@@ -96,6 +98,7 @@ var data;
     });
 
     $("#sectionMax").click(function () {
+      document.getElementById('mValue').innerHTML='';
       var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
       var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
       var m;  
@@ -119,6 +122,7 @@ var data;
     });
 
     $("#sectionMin").click(function () {
+      document.getElementById('mValue').innerHTML='';
       var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
       var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
       var m;  
@@ -139,6 +143,14 @@ var data;
         
       document.getElementById('mValue').innerHTML='минимальная температура на промежутке </br>'+firstDate+' - '+secondDate
       +' : '+'<b>'+m[1]+'</b></br>';
+    });
+
+    $("#clear").click(function () {
+      $('#datetimepicker8').data("DateTimePicker").setValue('');
+      $('#datetimepicker9').data("DateTimePicker").setValue('');
+      $("#datetimepicker9").data("DateTimePicker").setMinDate(new Date("01.01.2015"));
+      $("#datetimepicker8").data("DateTimePicker").setMaxDate(new Date("01.01.3015"));
+      
     });
 
 // var q=false;
