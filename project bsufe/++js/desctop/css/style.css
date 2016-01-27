@@ -7,9 +7,13 @@ iframe {
 
 p {
     font-family: cursive;
-    font-size: 30px;
+    font-size: 28px;
 }
 
 .btn-default, .btn-info {
     margin-left: 30px;
+}
+
+.info {
+	padding-left: 25px;
 }
