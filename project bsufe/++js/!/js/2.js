@@ -49,7 +49,7 @@ $(function () {
                     tooltip: {
                         formatter: function () {
                             var point = this.points[0];
-                            return Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>' +
+                            return Highcharts.dateFormat('%y %m %d %H %M %S', this.x) + ':<br/>' +
                                 't ' + Highcharts.numberFormat(point.y, 0);
                         },
                         shared: true
@@ -71,7 +71,7 @@ $(function () {
                         }
                     },
                     series: [{
-                        name: 'USD to EUR',
+                        name: 'temperature',
                         pointStart: detailStart,
                         pointInterval: 24 * 3600 * 1000,
                         data: detailData
@@ -200,7 +200,7 @@ $(function () {
 
                     series: [{
                         type: 'area',
-                        name: 'USD to EUR',
+                        name: 'temperature',
                         pointInterval: 24 * 3600 * 1000,
                         pointStart: data[0][0],
                         data: data
