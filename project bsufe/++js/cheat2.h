@@ -565,7 +565,6 @@ class Qwe{
 
 
 
-
 template<class qwe>
 class list1{
 	qwe val;
