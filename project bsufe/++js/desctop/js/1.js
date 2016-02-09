@@ -50,9 +50,10 @@
         },
 
         series: [{
-            type: 'area',
+            // type: 'line',
             name: 't',
             data: data
         }]
+
     });
 });

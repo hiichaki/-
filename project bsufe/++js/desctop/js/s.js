@@ -1,7 +1,16 @@
-var data;
+var data1;
+var data2;
+var data3;
     function f(filedata) {
-        data = filedata;
+        data1 = filedata;
     }
+     function ff(filedata) {
+        data2 = filedata;
+    }
+     function fff(filedata) {
+        data3 = filedata;
+    }
+
     
     function postloadfunction() {
 
@@ -29,7 +38,10 @@ var data;
       //call the postload function after a slight delay to allow the json to load
       window.setTimeout(postloadfunction, 100);
     }
-    load_json("file.js");
+
+    load_json("file1.js");
+    load_json("file2.js");
+    load_json("file3.js");
 
 
     function unixtimetodate(uni) {
@@ -38,29 +50,73 @@ var data;
       // theDate.setMonth(theDate.getMonth()-1);
       dateString = theDate.toLocaleString();
 
-      // console.log(dateString);
       return dateString;
     }
 
-    function max (filedata) {
+    function maxData1 (filedata) {
       document.getElementById('mValue').innerHTML='';
-      var m=data[0];
-      for(var i=1;i<data.length;++i){
-         if(data[i][1]>m[1]) 
-          m=data[i];
+      var m=data1[0];
+      for(var i=1;i<data1.length;++i){
+         if(data1[i][1]>m[1]) 
+          m=data1[i];
       }
-      document.getElementById('mValue').innerHTML='максимальная температура:'+'<b>'+m[1]+'°</b></br>'+unixtimetodate(m[0]);
+      document.getElementById('mValue').innerHTML='1максимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
     }
 
-    function min (filedata) {
+    function minData1 (filedata) {
       document.getElementById('mValue').innerHTML='';
-      var m=data[0];
-      for(var i=1;i<data.length;++i){
-         if(data[i][1]<m[1]) 
-          m=data[i];
+      var m=data1[0];
+      for(var i=1;i<data1.length;++i){
+         if(data1[i][1]<m[1]) 
+          m=data1[i];
       }
-      document.getElementById('mValue').innerHTML='минимальная температура:'+'<b>'+m[1]+'°</b></br>'+unixtimetodate(m[0]);
+      document.getElementById('mValue').innerHTML='1минимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
     }
+
+     function maxData2 (filedata) {
+      document.getElementById('mValue').innerHTML='';
+      var m=data2[0];
+      for(var i=1;i<data2.length;++i){
+         if(data2[i][1]>m[1]) 
+          m=data2[i];
+      }
+      document.getElementById('mValue').innerHTML='2максимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+    }
+
+    function minData2 (filedata) {
+      document.getElementById('mValue').innerHTML='';
+      var m=data2[0];
+      for(var i=1;i<data2.length;++i){
+         if(data2[i][1]<m[1]) 
+          m=data2[i];
+      }
+      document.getElementById('mValue').innerHTML='2минимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+    }
+
+     function maxData3 (filedata) {
+      document.getElementById('mValue').innerHTML='';
+      var m=data3[0];
+      for(var i=1;i<data3.length;++i){
+         if(data3[i][1]>m[1]) 
+          m=data3[i];
+      }
+      document.getElementById('mValue').innerHTML='3максимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+    }
+
+    function minData3 (filedata) {
+      document.getElementById('mValue').innerHTML='';
+      var m=data3[0];
+      for(var i=1;i<data3.length;++i){
+         if(data3[i][1]<m[1]) 
+          m=data3[i];
+      }
+      document.getElementById('mValue').innerHTML='3минимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+    }
+
+    // function foo(){
+    //   for(i=0;i<data1.length;++i)
+    //   console.log(data1[i][1]);
+    // }
 
     $(function () {
       $('#datetimepicker8').datetimepicker(
@@ -72,72 +128,161 @@ var data;
     });
 
     $(function() {
-        //Инициализация datetimepicker8 и datetimepicker9
+        
         $("#datetimepicker8").datetimepicker();
         $("#datetimepicker9").datetimepicker();
-        //При изменении даты в 8 datetimepicker, она устанавливается как минимальная для 9 datetimepicker
+        
         $("#datetimepicker8").on("dp.change", function(e) {
             $("#datetimepicker9").data("DateTimePicker").setMinDate(e.date);
         });
-        //При изменении даты в 9 datetimepicker, она устанавливается как максимальная для 8 datetimepicker
+
         $("#datetimepicker9").on("dp.change", function(e) {
             $("#datetimepicker8").data("DateTimePicker").setMaxDate(e.date);
         });
     });
 
-    $("#sectionMax").click(function () {
+
+    $("#sectionMaxData1").click(function () {
       document.getElementById('mValue').innerHTML='';
       var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
       var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
       var m;  
       var q=true;
-        for(i=0;i<data.length;++i){
-          if(unixtimetodate(data[i][0])>=firstDate){
+        for(i=0;i<data1.length;++i){
+          if(unixtimetodate(data1[i][0])>=firstDate){
              if(q){
-              m=data[i];
+              m=data1[i];
               q=false;
              }
-             if(data[i][1]>m[1]) 
-                m=data[i];
+             if(data1[i][1]>m[1]) 
+                m=data1[i];
           }
-          if(unixtimetodate(data[i][0])>=secondDate){
+          if(unixtimetodate(data1[i][0])>=secondDate){
             break;
           }
-        }
-        
-      document.getElementById('mValue').innerHTML='максимальная температура на промежутке </br>'+firstDate+' - '+secondDate
-      +' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+        }    
+      document.getElementById('mValue').innerHTML='1максимальная температура на промежутке </br>'+firstDate+' - '+secondDate+ ' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
     });
 
-    $("#sectionMin").click(function () {
+    $("#sectionMinData1").click(function () {
       document.getElementById('mValue').innerHTML='';
       var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
       var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
       var m;  
       var q=true;
-        for(i=0;i<data.length;++i){
-          if(unixtimetodate(data[i][0])>=firstDate){
+        for(i=0;i<data1.length;++i){
+          if(unixtimetodate(data1[i][0])>=firstDate){
              if(q){
-              m=data[i];
+              m=data1[i];
               q=false;
              }
-             if(data[i][1]<m[1]) 
-                m=data[i];
+             if(data1[i][1]<m[1]) 
+                m=data1[i];
           }
-          if(unixtimetodate(data[i][0])>=secondDate){
+          if(unixtimetodate(data1[i][0])>=secondDate){
             break;
           }
         }
-        
-      document.getElementById('mValue').innerHTML='минимальная температура на промежутке </br>'+firstDate+' - '+secondDate
-      +' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+      document.getElementById('mValue').innerHTML='1минимальная температура на промежутке </br>'+firstDate+' - '+secondDate+' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
     });
 
-    $("#clear").click(function () {
+
+    $("#sectionMaxData2").click(function () {
+      document.getElementById('mValue').innerHTML='';
+      var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
+      var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
+      var m;  
+      var q=true;
+        for(i=0;i<data2.length;++i){
+          if(unixtimetodate(data2[i][0])>=firstDate){
+             if(q){
+              m=data2[i];
+              q=false;
+             }
+             if(data2[i][1]>m[1]) 
+                m=data2[i];
+          }
+          if(unixtimetodate(data2[i][0])>=secondDate){
+            break;
+          }
+        }    
+      document.getElementById('mValue').innerHTML='2максимальная температура на промежутке </br>'+firstDate+' - '+secondDate+ ' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+    });
+
+    $("#sectionMinData2").click(function () {
+      document.getElementById('mValue').innerHTML='';
+      var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
+      var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
+      var m;  
+      var q=true;
+        for(i=0;i<data2.length;++i){
+          if(unixtimetodate(data2[i][0])>=firstDate){
+             if(q){
+              m=data2[i];
+              q=false;
+             }
+             if(data2[i][1]<m[1]) 
+                m=data2[i];
+          }
+          if(unixtimetodate(data2[i][0])>=secondDate){
+            break;
+          }
+        }
+      document.getElementById('mValue').innerHTML='2минимальная температура на промежутке </br>'+firstDate+' - '+secondDate+' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+    });
+
+
+    $("#sectionMaxData3").click(function () {
+      document.getElementById('mValue').innerHTML='';
+      var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
+      var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
+      var m;  
+      var q=true;
+        for(i=0;i<data3.length;++i){
+          if(unixtimetodate(data3[i][0])>=firstDate){
+             if(q){
+              m=data3[i];
+              q=false;
+             }
+             if(data3[i][1]>m[1]) 
+                m=data3[i];
+          }
+          if(unixtimetodate(data3[i][0])>=secondDate){
+            break;
+          }
+        }    
+      document.getElementById('mValue').innerHTML='3максимальная температура на промежутке </br>'+firstDate+' - '+secondDate+ ' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+    });
+
+    $("#sectionMinData3").click(function () {
+      document.getElementById('mValue').innerHTML='';
+      var firstDate=$('#datetimepicker8').data("DateTimePicker").getDate()._d.toLocaleString();
+      var secondDate=$('#datetimepicker9').data("DateTimePicker").getDate()._d.toLocaleString();
+      var m;  
+      var q=true;
+        for(i=0;i<data3.length;++i){
+          if(unixtimetodate(data3[i][0])>=firstDate){
+             if(q){
+              m=data3[i];
+              q=false;
+             }
+             if(data3[i][1]<m[1]) 
+                m=data3[i];
+          }
+          if(unixtimetodate(data3[i][0])>=secondDate){
+            break;
+          }
+        }
+      document.getElementById('mValue').innerHTML='3минимальная температура на промежутке </br>'+firstDate+' - '+secondDate+' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+    });
+
+      $("#clear").click(function () {
       $('#datetimepicker8').data("DateTimePicker").setValue('');
       $('#datetimepicker9').data("DateTimePicker").setValue('');
       $("#datetimepicker9").data("DateTimePicker").setMinDate(new Date("01.01.2015"));
       $("#datetimepicker8").data("DateTimePicker").setMaxDate(new Date("01.01.3015"));
+      document.getElementById('mValue').innerHTML='';
+        
       
     });
 
