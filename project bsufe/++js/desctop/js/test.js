@@ -16,7 +16,7 @@ $(function () {
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: 'текст'
             },
             plotLines: [{
                 value: 0,

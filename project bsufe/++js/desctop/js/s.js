@@ -60,7 +60,7 @@ var data3;
          if(data1[i][1]>m[1]) 
           m=data1[i];
       }
-      document.getElementById('mValue').innerHTML='1максимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+      document.getElementById('mValue').innerHTML='max t: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
     }
 
     function minData1 (filedata) {
@@ -70,7 +70,7 @@ var data3;
          if(data1[i][1]<m[1]) 
           m=data1[i];
       }
-      document.getElementById('mValue').innerHTML='1минимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+      document.getElementById('mValue').innerHTML='min t: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
     }
 
      function maxData2 (filedata) {
@@ -80,7 +80,7 @@ var data3;
          if(data2[i][1]>m[1]) 
           m=data2[i];
       }
-      document.getElementById('mValue').innerHTML='2максимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+      document.getElementById('mValue').innerHTML='max дж/м2: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
     }
 
     function minData2 (filedata) {
@@ -90,7 +90,7 @@ var data3;
          if(data2[i][1]<m[1]) 
           m=data2[i];
       }
-      document.getElementById('mValue').innerHTML='2минимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+      document.getElementById('mValue').innerHTML='min дж/м2: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
     }
 
      function maxData3 (filedata) {
@@ -100,7 +100,7 @@ var data3;
          if(data3[i][1]>m[1]) 
           m=data3[i];
       }
-      document.getElementById('mValue').innerHTML='3максимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+      document.getElementById('mValue').innerHTML='max E: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
     }
 
     function minData3 (filedata) {
@@ -110,7 +110,7 @@ var data3;
          if(data3[i][1]<m[1]) 
           m=data3[i];
       }
-      document.getElementById('mValue').innerHTML='3минимальная температура: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
+      document.getElementById('mValue').innerHTML='min E: <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b> ';
     }
 
     // function foo(){
@@ -161,7 +161,7 @@ var data3;
             break;
           }
         }    
-      document.getElementById('mValue').innerHTML='1максимальная температура на промежутке </br>'+firstDate+' - '+secondDate+ ' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+      document.getElementById('mValue').innerHTML='max t на промежутке </br>'+firstDate+' - '+secondDate+ ' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
     });
 
     $("#sectionMinData1").click(function () {
@@ -183,7 +183,7 @@ var data3;
             break;
           }
         }
-      document.getElementById('mValue').innerHTML='1минимальная температура на промежутке </br>'+firstDate+' - '+secondDate+' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+      document.getElementById('mValue').innerHTML='min t на промежутке </br>'+firstDate+' - '+secondDate+' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
     });
 
 
@@ -206,7 +206,7 @@ var data3;
             break;
           }
         }    
-      document.getElementById('mValue').innerHTML='2максимальная температура на промежутке </br>'+firstDate+' - '+secondDate+ ' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+      document.getElementById('mValue').innerHTML='max дж/м2 на промежутке </br>'+firstDate+' - '+secondDate+ ' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
     });
 
     $("#sectionMinData2").click(function () {
@@ -228,7 +228,7 @@ var data3;
             break;
           }
         }
-      document.getElementById('mValue').innerHTML='2минимальная температура на промежутке </br>'+firstDate+' - '+secondDate+' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+      document.getElementById('mValue').innerHTML='min дж/м2 на промежутке </br>'+firstDate+' - '+secondDate+' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
     });
 
 
@@ -251,7 +251,7 @@ var data3;
             break;
           }
         }    
-      document.getElementById('mValue').innerHTML='3максимальная температура на промежутке </br>'+firstDate+' - '+secondDate+ ' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+      document.getElementById('mValue').innerHTML='max E на промежутке </br>'+firstDate+' - '+secondDate+ ' : <b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
     });
 
     $("#sectionMinData3").click(function () {
@@ -273,7 +273,7 @@ var data3;
             break;
           }
         }
-      document.getElementById('mValue').innerHTML='3минимальная температура на промежутке </br>'+firstDate+' - '+secondDate+' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
+      document.getElementById('mValue').innerHTML='min E на промежутке </br>'+firstDate+' - '+secondDate+' : '+'<b>'+unixtimetodate(m[0])+' '+m[1]+'°</b></br>';
     });
 
       $("#clear").click(function () {
