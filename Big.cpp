@@ -7,7 +7,9 @@ class Big{
 	int n;
 	int sign;
 	public:	
-		
+		void test(){
+			
+		}
 		Big(){
 			n=0;
 			sign=1;

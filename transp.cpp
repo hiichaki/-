@@ -148,7 +148,7 @@ int main(){
 	system(c);
 	
 	q.show();
-	q.calc2();
+	q.calc();
 	q.showA();
 	q.show();
 	q.showSum();
